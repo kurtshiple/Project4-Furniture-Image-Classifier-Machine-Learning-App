@@ -12,18 +12,37 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@app.route("/input/<img>")
-def input():
-    return render_template("index.html")
+# @app.route("/input/<img>")
+# def input():
+#     return render_template("index.html")
 
-# @app.route("/input")
+@app.route("/upload/",methods=['GET','POST'])
+def upload_file():
+    if request.method == 'POST':
+        file = request.files['file[]']
+    if file:
+            filename = secure_filename(file.filename)
+            file.save(os.path.join('../static/img',filename))
+            return render_template('output.html')
+    return render_template('output.html')
 # def upload_file():
 #     if request.method =='POST':
-#         file = request.files['file[]']
+#         file = request.files['file']
 #         if file:
 #             filename = secure_filename(file.filename)
-#             file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
-#     return render_template('file_upload.html')
+#             file.save(os.path.join('../static/img',filename))
+#     return render_template('output.html')
+
+# def contact():
+#     if request.method == 'POST':
+#         if request.form['submit_button'] == 'Do Something':
+#             pass # do something
+#         elif request.form['submit_button'] == 'Do Something Else':
+#             pass # do something else
+#         else:
+#             pass # unknown
+#     elif request.method == 'GET':
+#         return render_template('contact.html', form=form)
 
 @app.route("/output")
 def output():
