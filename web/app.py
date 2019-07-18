@@ -37,7 +37,7 @@ def upload_file():
         
         # get image from img folder
         model = load_model("testmodel_2.h5")
-        image_size = (200, 200)
+        image_size = (100, 100)
         image_path = os.path.join("./static/img/", filename)
         img = image.load_img(image_path, target_size=image_size)
 
@@ -51,17 +51,16 @@ def upload_file():
         x_quest = x_ques.reshape(x_ques.shape[0], x_ques.shape[1],x_ques.shape[2],3)
         x_quest.shape
         model.predict(x_quest).round()
+
         k = model.predict_classes(x_quest)[0]+1
         dg=pd.read_csv("B_reduced_labels.csv",encoding="utf-8")
         furn_type=dg[dg['label_id']==k]['text_id'].tolist()
         
-
-
-        returnstring = f"Predicted class: ({k}) {furn_type[0]}"
+        returnstring = f"I think this might be: {furn_type[0]}"
         print(f"Predicted Class :  {k}")
         print(f"Described Class :  {furn_type[0]}")
 
-        return render_template("output.html", displaytext=returnstring )
+        return render_template("output.html", displaytext=returnstring, displayimg=image_path )
     return render_template("output.html")
 
     # if request.method == 'POST':

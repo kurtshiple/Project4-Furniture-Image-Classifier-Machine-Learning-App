@@ -1,3 +1,49 @@
 <!doctype html>
-<h1>{{ displaytext }}</h1>
+
+<head>
+<title>Picture Predictor</title>
+<link rel=“stylesheet” href=“https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css” integrity=“sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T” crossorigin=“anonymous”>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="../static/js/app.js"></script>
+</head>
+
+
+<body class=“bg-primary”>
+    <div class=“fluid-container bg-primary”>
+
+        <div class=“jumbotron row bg-primary”>
+            <div class=“col-md-7”>
+                <center>
+                    <h1 class=“text-light”>Your Furniture is ...</h1>
+                </center>
+                <center>
+                    <br>
+                    <h1 class=“text-light”>{{ displaytext }}</h1>
+                    <img src="{{ displayimg }}">
+                </center>
+               <!-- <div>
+                        <center>
+                        <h5 class=“text-light”>Was this correct?</h5>
+                <button type="button" class="yes">
+                        <span class="glyphicon glyphicon-circle-arrow-up"></span> Yes
+                      </button>
+                      <button type="button" class="no">
+                        <span class="glyphicon glyphicon-circle-arrow-down"></span> No
+                </button>
+                </center>
+                </div>
+                <center>
+                <div class="col-md-offset-4 col-md-4">
+                    <h3>Number of Submuts: </h3>
+                    <h3 class="total">0</h3>
+                    <h3>Number of correct answers: </h3>
+                    <h3 class="counter">0</h3>
+                </center>
+                </div> -->
+            </div>
+            
+        </body>
 </html>
