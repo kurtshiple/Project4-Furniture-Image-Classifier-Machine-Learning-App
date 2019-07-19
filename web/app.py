@@ -7,7 +7,8 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from PIL import Image 
+from PIL import Image
+from sklearn.preprocessing import LabelEncoder 
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
@@ -36,6 +37,7 @@ def upload_file():
         filename = f.filename
         
         # get image from img folder
+        # model = load_model("testmodel2.h5")
         model = load_model("testmodel_2.h5")
         image_size = (100, 100)
         image_path = os.path.join("./static/img/", filename)
@@ -52,13 +54,20 @@ def upload_file():
         x_quest.shape
         model.predict(x_quest).round()
 
-        k = model.predict_classes(x_quest)[0]+1
+        # label_encoder=LabelEncoder()
+        # label_encoder.classes_ = np.load('label_encoder.npy')
+        # encoded_predictions = model.predict_classes(x_quest)
+        # prediction_labels = label_encoder.inverse_transform(encoded_predictions)
+        # k=int(prediction_labels[0])
+
+        k = model.predict_classes(x_quest)[0]+1 # COMMENT ME OUT
         dg=pd.read_csv("B_reduced_labels.csv",encoding="utf-8")
         furn_type=dg[dg['label_id']==k]['text_id'].tolist()
-        
         returnstring = f"I think this might be: {furn_type[0]}"
-        print(f"Predicted Class :  {k}")
-        print(f"Described Class :  {furn_type[0]}")
+        
+        # returnstring = f"I think this might be: {furn_type[0]}"
+        # print(f"Predicted Class :  {k}")
+        # print(f"Described Class :  {furn_type[0]}")
 
         return render_template("output.html", displaytext=returnstring, displayimg=image_path )
     return render_template("output.html")
