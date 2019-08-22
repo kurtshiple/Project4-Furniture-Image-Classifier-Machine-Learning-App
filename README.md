@@ -1,4 +1,3 @@
 # Project4-Furniture-Image-Classifier-Machine-Learning-App
-This interactive web app uses image recognition machine learning with a drag and 
-drop javascript widget in order to determine what type of furniture the image 
-resembles.
+This interactive web app utilizes machine learning and neural networks to create an image classifier with a drag and 
+drop javascript widget in order to determine what type of furniture the image resembles. The inspiration for the project came from a problem that one of the group members was having within their related field of work. Inventory classification and documentation can often be sloppy and disorganized so our goal was to create something that would automatically classify and document a particular furniture model should it already exist in a hypothetical inventory. We figured the most obvious way this could be done was for the program to identify the object via image recognition.
